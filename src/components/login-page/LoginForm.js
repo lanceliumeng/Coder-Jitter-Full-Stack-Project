@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({ activateUser }) => {
+  const navigate = useNavigate();
   //username state
   // const [user, setUser] = useState("");
   //password state
@@ -17,9 +19,10 @@ const LoginForm = ({ activateUser }) => {
   const submitHandler = (event) => {
     event.preventDefault();
     // console.log("You clicked sumbit for the form");
-    // console.log(formData);
+    console.log(formData);
     activateUser(formData.username);
     setFormData(initialFormData); //after form submit, reset input to initial, in this case, reset back to blank
+    navigate("/messages");
   };
 
   //for user input, each input name or id is very important
