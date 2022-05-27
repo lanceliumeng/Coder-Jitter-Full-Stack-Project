@@ -1,7 +1,11 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { useGlobalState } from "../utlis/stateContext";
 
-const MessageDetail = ({ messageList }) => {
+const MessageDetail = () => {
+  const { store } = useGlobalState();
+  const { messageList } = store;
+
   const params = useParams();
   console.log(params);
 

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGlobalState } from "../utlis/stateContext";
 
-const MessageForm = ({ loggedInUser, addMessage }) => {
+const MessageForm = () => {
+  const { store, dispatch } = useGlobalState();
+  const { loggedInUser, messageList } = store;
   const navigate = useNavigate();
 
   const initialFormData = {
@@ -32,6 +35,26 @@ const MessageForm = ({ loggedInUser, addMessage }) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const addMessage = (text) => {
+    const newMsg = {
+      id: nextId,
+      text: text,
+      user: loggedInUser,
+    };
+
+    // setMessageList((messageList) => [newMsg, ...messageList]);
+    dispatch({
+      type: "addMessage",
+      data: newMsg,
+    });
+  };
+
+  const nextId =
+    messageList.reduce(
+      (init, currMsg) => (init > currMsg.id ? init : currMsg.id),
+      0
+    ) + 1;
 
   return (
     <>

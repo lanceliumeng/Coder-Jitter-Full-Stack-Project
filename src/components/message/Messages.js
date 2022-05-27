@@ -1,7 +1,10 @@
 import React from "react";
+import { useGlobalState } from "../utlis/stateContext";
 import Message from "./Message";
 
-const Messages = ({ messageList }) => {
+const Messages = () => {
+  const { store } = useGlobalState();
+  const { messageList } = store;
   return (
     <>
       {messageList.map((msg) => (

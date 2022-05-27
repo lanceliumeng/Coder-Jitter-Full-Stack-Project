@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGlobalState } from "../utlis/stateContext";
 
-const LoginForm = ({ activateUser }) => {
+const LoginForm = () => {
+  const { dispatch } = useGlobalState();
+
   const navigate = useNavigate();
   //username state
   // const [user, setUser] = useState("");
@@ -20,7 +23,10 @@ const LoginForm = ({ activateUser }) => {
     event.preventDefault();
     // console.log("You clicked sumbit for the form");
     console.log(formData);
-    activateUser(formData.username);
+    dispatch({
+      type: "setLoggedInUser",
+      data: formData.username,
+    });
     setFormData(initialFormData); //after form submit, reset input to initial, in this case, reset back to blank
     navigate("/messages");
   };
