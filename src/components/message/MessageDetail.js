@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useGlobalState } from "../utlis/stateContext";
+import { Card, CardContent, Typography } from "@mui/material";
 
 const MessageDetail = () => {
   const { store } = useGlobalState();
@@ -17,10 +18,12 @@ const MessageDetail = () => {
   return (
     <>
       {message ? (
-        <>
-          <p>{message.text}</p>
-          <p>{message.user}</p>
-        </>
+        <Card>
+          <CardContent>
+            <Typography variant="h5">{message.text}</Typography>
+            <Typography variant="p">{message.user}</Typography>
+          </CardContent>
+        </Card>
       ) : (
         <>
           <p>Message not Found</p>

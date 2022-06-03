@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "../utlis/stateContext";
-
+import { Button } from "@mui/material";
 const MessageForm = () => {
   const { store, dispatch } = useGlobalState();
   const { loggedInUser, messageList } = store;
@@ -70,8 +70,14 @@ const MessageForm = () => {
           />
         </div>
 
-        <input type="submit" value="Post" />
-        <button onClick={cleanMessageHandler}>Clean Message</button>
+        {/* <input type="submit" value="Post" />
+        <button onClick={cleanMessageHandler}>Clean Message</button> */}
+        <Button type="submit" value="Post" variant="contained">
+          Post Message
+        </Button>
+        <Button onClick={cleanMessageHandler} variant="contained">
+          Clean Message
+        </Button>
       </form>
     </>
   );

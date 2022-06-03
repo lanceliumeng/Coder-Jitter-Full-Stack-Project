@@ -15,7 +15,8 @@ import NotFound from "./404-page/NotFound";
 import MessageDetail from "./message/MessageDetail";
 import reducer from "./utlis/reducer";
 import { StateContext } from "./utlis/stateContext";
-
+import { Typography } from "@mui/material";
+// import axios from "axios";
 const App = () => {
   //useReducer handles all the states in the same object
   const initialState = {
@@ -64,6 +65,17 @@ const App = () => {
   useEffect(() => {
     //fetch
     // setMessageList(initialMessageList);
+    // fetch("http://127.0.0.1:4000/messages") //fetch local backend api
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data));
+    //use axios package to instead of fetch
+    // axios.get("http://127.0.0.1:4000/messages").then((response) => {
+    //   console.log(response.data);
+    //   dispatch({
+    //     type: "setMessageList",
+    //     data: response.data,
+    //   });
+    // });
     dispatch({
       type: "setMessageList",
       data: initialMessageList,
@@ -72,7 +84,7 @@ const App = () => {
 
   return (
     <div>
-      <h1> Jitter </h1>
+      <Typography variant="h3"> Jitter </Typography>
 
       {/* {!loggedInUser ? (
         <LoginForm activateUser={activateUser} />
