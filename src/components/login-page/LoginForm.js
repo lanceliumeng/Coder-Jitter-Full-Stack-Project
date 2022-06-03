@@ -1,3 +1,4 @@
+import { Button, InputLabel, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "../utlis/stateContext";
@@ -45,8 +46,8 @@ const LoginForm = () => {
     <>
       <form onSubmit={submitHandler}>
         <div>
-          <label htmlFor="email">Username:</label>
-          <input
+          <InputLabel htmlFor="email">Username:</InputLabel>
+          <TextField
             type="text"
             name="username"
             id="username"
@@ -56,8 +57,8 @@ const LoginForm = () => {
         </div>
 
         <div>
-          <label htmlFor="password">Password:</label>
-          <input
+          <InputLabel htmlFor="password">Password:</InputLabel>
+          <TextField
             type="password"
             name="password"
             id="password"
@@ -66,7 +67,10 @@ const LoginForm = () => {
           />
         </div>
 
-        <input type="submit" value="login" />
+        {/* <input type="submit" value="login" /> */}
+        <Button type="submit" variant="contained">
+          Login
+        </Button>
       </form>
     </>
   );
